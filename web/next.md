@@ -265,7 +265,7 @@ function clickEvent(ob){
   </p>
 </div>
 <h1>Crash reporting</h1>
-<h2>Enabling automatic crash reporting</h2>
+<h2>Automatic crash handling</h2>
 <p>
   <span style="font-weight: 400;">Countly also provides a way for tracking JavaScript errors on your websites.</span>
 </p>
@@ -284,7 +284,7 @@ function clickEvent(ob){
     <pre><code class="javascript">Countly.track_errors()</code></pre>
   </div>
 </div>
-<h2>Adding a custom key-value segment to a crash report</h2>
+<h2>Automatic crash report segmentation</h2>
 <p>
   <span style="font-weight: 400;">Additionally, you may add more segments or properties/values to track with error reports by providing an object with a key/values to add to the error reports.</span>
 </p>
@@ -306,6 +306,7 @@ function clickEvent(ob){
 })</code></pre>
   </div>
 </div>
+<h2>Handled exceptions</h2>
 <p>
   <span style="font-weight: 400;">Apart from automatically reporting unhandled errors, you may also report handled exceptions to the server, so you may figure out how to handle them later on (or if you even need to figure out how to handle them later on). Optionally, you may once again provide the custom segments to be used in the report (or use the ones provided with the&nbsp;<strong>track_error</strong>&nbsp;method as default ones).</span>
 </p>
@@ -341,7 +342,7 @@ catch(ex){
   <strong>recodError (error, nonFatal, segments)</strong> where nonFatal is false
   to indicate the fatality of the error.
 </p>
-<h2>Adding breadcrumbs</h2>
+<h2>Crash breadcrumbs</h2>
 <p>
   <span style="font-weight: 400;">To better understand what your users did prior to receiving an error, you may leave breadcrumbs throughout the code on different user actions. These breadcrumbs will then be combined in a single log and reported to the server as well.</span>
 </p>
@@ -419,7 +420,7 @@ catch(ex){
   documentation.
 </p>
 <h1>Events</h1>
-<h2>Setting up events</h2>
+<h2>Intro with event field overview</h2>
 <p>
   <span style="font-weight: 400;">Events are a way to track any custom actions or other data you would like to track from your website. You may also set segments to be able to view a breakdown of the action by providing the segment values.</span>
 </p>
@@ -429,7 +430,6 @@ catch(ex){
     All data passed to the Countly instance via the SDK or API should be in UTF-8.
   </p>
 </div>
-<h2>Accessing event-related functionality</h2>
 <p>An event consists of a JavaScript object with keys:</p>
 <ul>
   <li>key - the name of the event (mandatory)</li>
@@ -443,7 +443,7 @@ catch(ex){
     segments
   </li>
 </ul>
-<h2>Segmentation</h2>
+<h2>Recording events</h2>
 <p>
   <span style="font-weight: 400;">Here is an example of adding an event with all possible properties:</span>
 </p>
@@ -767,7 +767,7 @@ Countly.q.push(['track_pageview', null, null, {theme:"red", mode:"fullscreen"}])
 Countly.track_pageview(null, null, {theme:"red", mode:"fullscreen"});<br></code></pre>
   </div>
 </div>
-<h3>Overriding view name and URL getters</h3>
+<h2>Manual view tracking</h2>
 <p>
   <span style="font-weight: 400;">There are cases when determining the view name requires more complex logic, and in some cases, you will need to separate the URL and the View naming. This is done so you may still have some business logic view names, yet you have the valid URL underneath them to view action maps, such as clicks and scrolls.</span>
 </p>
@@ -818,8 +818,8 @@ Countly.track_pageview(null, null, {theme:"red", mode:"fullscreen"});<br></code>
   This feature requires Views consent. No additional views will be recorded if
   consent is required and not given
 </p>
-<h1>Device ID generation</h1>
-<h2>Changing device ID with and without merge</h2>
+<h1>Device ID management</h1>
+<h2>Changing device ID</h2>
 <p>
   <span style="font-weight: 400;">In some cases, you may want to change the ID of the user/device that you provided or Countly automatically generated, e.g. when a user was changed.</span>
 </p>
@@ -869,7 +869,7 @@ Countly.track_pageview(null, null, {theme:"red", mode:"fullscreen"});<br></code>
   until new consent has been given again for that new device ID
 </p>
 <h1>Heatmaps</h1>
-<h2>Track Clicks (Enterprise edition)</h2>
+<h2>Track Clicks</h2>
 <p>
   <span style="font-weight: 400;">This method will automatically track clicks on the last reported view and display them on the heatmap.</span>
 </p>
@@ -904,7 +904,7 @@ Countly.track_pageview(null, null, {theme:"red", mode:"fullscreen"});<br></code>
 <div class="img-container">
   <img src="https://count.ly/images/guide/b893929-11.png">
 </div>
-<h2>Track Scrolls (Enterprise edition)</h2>
+<h2>Track Scrolls</h2>
 <p>
   <span style="font-weight: 400;">This method will automatically track scrolls on the last reported view and display them on the heatmap.</span>
 </p>
@@ -932,6 +932,7 @@ Countly.track_pageview(null, null, {theme:"red", mode:"fullscreen"});<br></code>
   not given and is required, no information will be recorded.
 </p>
 <h1>Remote config</h1>
+<h2>Intro</h2>
 <p>
   <span style="font-weight: 400;">Remote configuration functionality is disabled by default and needs to be explicitly enabled.</span>
 </p>
@@ -941,7 +942,7 @@ Countly.track_pageview(null, null, {theme:"red", mode:"fullscreen"});<br></code>
 <p>
   <span style="font-weight: 400;">In the event of one of the following sessions, assuming it would not be possible to load the remote configuration from storage, you will receive an error object in the callback, but you will still have the stored values of the cached remote configuration object.</span>
 </p>
-<h2>Enabling Remote configuration</h2>
+<h2>Automatic remote config</h2>
 <p>
   <span style="font-weight: 400;">You may enable remote configuration by providing&nbsp;the </span><em><span style="font-weight: 400;">remote_config</span></em><span style="font-weight: 400;">&nbsp;setting when initializing the SDK.</span>
 </p>
@@ -993,7 +994,7 @@ console.log(remoteConfigs);
   </div>
 </div>
 <h2>
-  Receiving configuration values<span style="font-weight: 400;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;</span>
+  Manual remote config<span style="font-weight: 400;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;</span>
 </h2>
 <p>
   <span style="font-weight: 400;">You receive the initially loaded remote configuration values in the provided callback, but if you&nbsp;need to get an updated version afterward, you can manually reload it.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
@@ -1009,7 +1010,7 @@ var remoteConfig = Countly.get_remote_config();
 
 //or get value for specific key like 'test'
 var test = Countly.get_remote_config("test");</code></pre>
-<h2>Reloading configuration values</h2>
+<h2>Filtered value update</h2>
 <p>
   <span style="font-weight: 400;">Should you need to reload the remote config in order to receive the latest value, call&nbsp;the </span><em><span style="font-weight: 400;">fetch_remote_config</span></em><span style="font-weight: 400;">&nbsp;method.</span>
 </p>
@@ -1253,7 +1254,7 @@ function feedbackWidgetsCallback(countlyPresentableFeedback, err) {
   Note: Feedback widget's show policies are handled internally by the web sdk.
 </p>
 <h1>User Profiles</h1>
-<h2>User details</h2>
+<h2>Setting custom values</h2>
 <p>
   <span style="font-weight: 400;">If you have any details about the user/visitor, you may provide Countly with that information. This will allow you to track every specific user on the "User Profiles" tab, which is available with <a href="http://count.ly/enterprise-edition">Countly Enterprise Edition</a>.</span>
 </p>
@@ -1302,7 +1303,7 @@ function feedbackWidgetsCallback(countlyPresentableFeedback, err) {
  });</code></pre>
   </div>
 </div>
-<h2>Modifying custom data</h2>
+<h2>Modifying data</h2>
 <p>
   <span style="font-weight: 400;">Additionally, you may perform different manipulations on custom data values, such as incrementing the current value on the server or storing an array of values under the same property.</span>
 </p>
@@ -1351,6 +1352,7 @@ Countly.userData.save() //send userData to server</code></pre>
   them manually. The other is using a plugin that will use boomerang.js to collect
   data and report it as a performance trace.
 </p>
+<h2>Custom traces</h2>
 <p>
   To manually report trace you need to construct the trace and call a method like
   this:
@@ -1385,6 +1387,7 @@ Countly.report_trace({
 });</code></pre>
   </div>
 </div>
+<h2>Automatic device traces</h2>
 <p>
   To automatically report traces you will need to include 2 additional files in
   your project:
@@ -1492,75 +1495,6 @@ Countly.require_consent = true;</code></pre>
 <p>
   <span style="font-weight: 400;">Next, you may select all the&nbsp;<a href="https://support.count.ly/hc/en-us/articles/360037441932-Web-analytics-JavaScript-#helper-methods" target="_self">helper methods</a>&nbsp;you will be using. They won't be tracking or sending anything to the server until consent is given.</span>
 </p>
-<h2>Feature groups</h2>
-<p>
-  <span style="font-weight: 400;">The SDK provides different features for consent. You may check all the supported features for the current SDK by checking the&nbsp;</span><strong>Countly.features</strong><span style="font-weight: 400;">&nbsp;property. Here is a list containing all the properties with ex</span>planations:
-</p>
-<ul>
-  <li>
-    <span style="font-weight: 400;">sessions - tracks when, how often, and how long users use your website</span>
-  </li>
-  <li>
-    <span style="font-weight: 400;">events - allows your events to be sent to the server</span>
-  </li>
-  <li>
-    <span style="font-weight: 400;">views - allows for the views/pages accessed by a user to be tracked</span>
-  </li>
-  <li>
-    <span style="font-weight: 400;">scrolls - allows a user’s scrolls to be tracked on the heatmap</span>
-  </li>
-  <li>
-    <span style="font-weight: 400;">clicks - allows a user’s clicks and link clicks to be tracked on the heatmap</span>
-  </li>
-  <li>
-    <span style="font-weight: 400;">forms - allows a user’s form submissions to be tracked</span>
-  </li>
-  <li>
-    <span style="font-weight: 400;">crashes - allows JavaScript errors to be tracked</span>
-  </li>
-  <li>
-    <span style="font-weight: 400;">attribution - allows the campaign from which a user came to be tracked</span>
-  </li>
-  <li>
-    <span style="font-weight: 400;">users - allows user information, including custom properties, to be collected/provided</span>
-  </li>
-  <li>
-    <span style="font-weight: 400;">star-rating - allows user rating and feedback tracking through rating widgets</span>
-  </li>
-  <li>
-    <span style="font-weight: 400;">feedback - allows survey, nps rating and feedback tracking through feedback widgets</span>
-  </li>
-  <li>
-    <span style="font-weight: 400;">apm - allows performance tracking of application by recording traces</span>
-  </li>
-  <li>
-    <span style="font-weight: 400;">location - allows a user’s location (country, city area) to be recorded</span>
-  </li>
-</ul>
-<p>
-  <span style="font-weight: 400;">This is the most granular level with control features for which consent may be given. However, depending on your website and use case, you may also want to combine some of the features into one using the&nbsp;<strong>group_features</strong>&nbsp;method.</span>
-</p>
-<div class="tabs">
-  <div class="tabs-menu">
-    <span class="tabs-link is-active">Grouping features</span>
-    <span class="tabs-link">One group for everything</span>
-  </div>
-  <div class="tab">
-    <pre><code class="javascript">Countly.group_features({
-    activity:["sessions","events","views"],
-    interaction:["scrolls","clicks","forms"]
-});
-//After this call Countly.add_consent("activity") to allow "sessions","events","views"
-//or call Countly.add_consent("interaction") to allow "scrolls","clicks","forms"
-//or call Countly.add_consent("crashes") to allow some separate feature</code></pre>
-  </div>
-  <div class="tab is-hidden">
-    <pre><code class="javascript">Countly.group_features({
-  all:["sessions","events","views","scrolls","clicks","forms","crashes","attribution","users"]
-});
-//After this call Countly.add_consent("all") to allow all features</code></pre>
-  </div>
-</div>
 <h2>Changing consent</h2>
 <p>
   <span style="font-weight: 400;">Upon a visitor’s arrival to your website, you should check if you already have consent from this visitor. If not, you should present them with a popup explaining what will be tracked and allow them to consent to tracking. When a user selects the consent preferences, you should persistently store it, and on each Countly load, let Countly know for which features the user gave consent by calling the&nbsp;<strong>Countly.add_consent</strong>&nbsp;method and passing one or multiple features (as an array). For example, you should also allow the user to change their mind regarding separate settings screens and when changes are going to be made there.</span>
@@ -1750,6 +1684,75 @@ Countly.check_any_consent();
 
 //to check if a specific consent is given, returns true if given
 Countly.check_consent('consentToCheck');</code></pre>
+  </div>
+</div>
+<h2>Feature groups</h2>
+<p>
+  <span style="font-weight: 400;">The SDK provides different features for consent. You may check all the supported features for the current SDK by checking the&nbsp;</span><strong>Countly.features</strong><span style="font-weight: 400;">&nbsp;property. Here is a list containing all the properties with ex</span>planations:
+</p>
+<ul>
+  <li>
+    <span style="font-weight: 400;">sessions - tracks when, how often, and how long users use your website</span>
+  </li>
+  <li>
+    <span style="font-weight: 400;">events - allows your events to be sent to the server</span>
+  </li>
+  <li>
+    <span style="font-weight: 400;">views - allows for the views/pages accessed by a user to be tracked</span>
+  </li>
+  <li>
+    <span style="font-weight: 400;">scrolls - allows a user’s scrolls to be tracked on the heatmap</span>
+  </li>
+  <li>
+    <span style="font-weight: 400;">clicks - allows a user’s clicks and link clicks to be tracked on the heatmap</span>
+  </li>
+  <li>
+    <span style="font-weight: 400;">forms - allows a user’s form submissions to be tracked</span>
+  </li>
+  <li>
+    <span style="font-weight: 400;">crashes - allows JavaScript errors to be tracked</span>
+  </li>
+  <li>
+    <span style="font-weight: 400;">attribution - allows the campaign from which a user came to be tracked</span>
+  </li>
+  <li>
+    <span style="font-weight: 400;">users - allows user information, including custom properties, to be collected/provided</span>
+  </li>
+  <li>
+    <span style="font-weight: 400;">star-rating - allows user rating and feedback tracking through rating widgets</span>
+  </li>
+  <li>
+    <span style="font-weight: 400;">feedback - allows survey, nps rating and feedback tracking through feedback widgets</span>
+  </li>
+  <li>
+    <span style="font-weight: 400;">apm - allows performance tracking of application by recording traces</span>
+  </li>
+  <li>
+    <span style="font-weight: 400;">location - allows a user’s location (country, city area) to be recorded</span>
+  </li>
+</ul>
+<p>
+  <span style="font-weight: 400;">This is the most granular level with control features for which consent may be given. However, depending on your website and use case, you may also want to combine some of the features into one using the&nbsp;<strong>group_features</strong>&nbsp;method.</span>
+</p>
+<div class="tabs">
+  <div class="tabs-menu">
+    <span class="tabs-link is-active">Grouping features</span>
+    <span class="tabs-link">One group for everything</span>
+  </div>
+  <div class="tab">
+    <pre><code class="javascript">Countly.group_features({
+    activity:["sessions","events","views"],
+    interaction:["scrolls","clicks","forms"]
+});
+//After this call Countly.add_consent("activity") to allow "sessions","events","views"
+//or call Countly.add_consent("interaction") to allow "scrolls","clicks","forms"
+//or call Countly.add_consent("crashes") to allow some separate feature</code></pre>
+  </div>
+  <div class="tab is-hidden">
+    <pre><code class="javascript">Countly.group_features({
+  all:["sessions","events","views","scrolls","clicks","forms","crashes","attribution","users"]
+});
+//After this call Countly.add_consent("all") to allow all features</code></pre>
   </div>
 </div>
 <h1>Security and Privacy</h1>
