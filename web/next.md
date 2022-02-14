@@ -175,6 +175,9 @@ function clickEvent(ob){
 <p>
   <strong>Note:</strong> Ensure you are using the App Key (found under Management
   -&gt; Applications) and not the API Key. Entering the API Key will not work.
+  For more information on how to acquire your application key (APP_KEY) and server
+  URL, please check
+  <a href="https://support.count.ly/hc/en-us/articles/900000908046-Getting-started-with-SDKs#acquiring-your-application-key-and-server-url%E2%80%9D.">here</a>.
 </p>
 <h3>Providing the server URL</h3>
 <p>
